@@ -118,8 +118,9 @@ class TomeRater:
             self.books[book] = 1
             
     def add_user(self, name, email, user_books=None):
-        if self.users[email]: print("This user already exists.")
-        else:
+        try:
+            if self.users[email]: print("This user already exists.")
+        except KeyError:
             self.users[email] = User(name, email)
             if user_books:
                 for book in user_books:
